@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SofiaConseil.Wpf", "SofiaConseil.Wpf\SofiaConseil.Wpf.csproj", "{38DC58E3-4B24-46B8-AB30-AD0771DBE6FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SofiaConseil.DbLib", "SofiaConseil.DbLib\SofiaConseil.DbLib.csproj", "{F9EC40E7-1060-4874-BEE6-B21ADBEC1791}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38DC58E3-4B24-46B8-AB30-AD0771DBE6FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38DC58E3-4B24-46B8-AB30-AD0771DBE6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38DC58E3-4B24-46B8-AB30-AD0771DBE6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38DC58E3-4B24-46B8-AB30-AD0771DBE6FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9EC40E7-1060-4874-BEE6-B21ADBEC1791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9EC40E7-1060-4874-BEE6-B21ADBEC1791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9EC40E7-1060-4874-BEE6-B21ADBEC1791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9EC40E7-1060-4874-BEE6-B21ADBEC1791}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDF14FC0-973E-4F49-954B-898B9741F677}
+	EndGlobalSection
+EndGlobal
