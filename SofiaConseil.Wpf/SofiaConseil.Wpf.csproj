@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SofiaConseil.DbLib\SofiaConseil.DbLib.csproj" />
+  </ItemGroup>
+
 </Project>

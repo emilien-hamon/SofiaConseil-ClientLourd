@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using SofiaConseil.DbLib.Class;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,8 +17,15 @@ namespace SofiaConseil.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string Email { get; set; }
+
         public MainWindow()
         {
+            using (SofiaConseilContext context = new())
+            {
+                Email = context.Users.First().Email;
+            }
+            this.DataContext = this;
             InitializeComponent();
         }
     }
