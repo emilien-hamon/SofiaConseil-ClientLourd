@@ -12,4 +12,8 @@
     <ProjectReference Include="..\SofiaConseil.DbLib\SofiaConseil.DbLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Converters\" />
+  </ItemGroup>
+
 </Project>
