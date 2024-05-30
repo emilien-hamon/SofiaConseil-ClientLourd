@@ -1,4 +1,6 @@
 ﻿using SofiaConseil.DbLib.Class;
+using SofiaConseil.Wpf.ViewModel;
+using SofiaConseil.Wpf.Views;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,16 +19,22 @@ namespace SofiaConseil.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string Email { get; set; }
-
         public MainWindow()
         {
-            using (SofiaConseilContext context = new())
-            {
-                Email = context.Users.First().Email;
-            }
-            this.DataContext = this;
+            this.DataContext = new ViewModelMainWindow();
             InitializeComponent();
+        }
+
+        private void ButtonHome_Click(object sender, RoutedEventArgs e)
+        {
+            DockPanelMain.Children.Clear();
+            DockPanelMain.Children.Add(new ViewHome());
+        }
+
+        private void ButtonCompetences_Click(object sender, RoutedEventArgs e)
+        {
+            DockPanelMain.Children.Clear();
+            DockPanelMain.Children.Add(new ViewCompetences());
         }
     }
 }
