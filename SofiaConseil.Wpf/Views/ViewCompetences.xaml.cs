@@ -31,5 +31,15 @@ namespace SofiaConseil.Wpf.Views
         {
             ((ViewModelCompetences)this.DataContext).AddCompetence();
         }
+
+        private void ButtonDeleteCompetence_Click(object sender, RoutedEventArgs e)
+        {
+            ((ViewModelCompetences)this.DataContext).RemoveCompetence();
+        }
+
+        private void ButtonUpdateCompetence_Click(object sender, RoutedEventArgs e)
+        {
+            ((ViewModelCompetences)this.DataContext).UpdateCompetence();
+        }
     }
 }

@@ -11,6 +11,8 @@ public partial class Demande
 
     public long IdStatuts { get; set; }
 
+    public long? IdFreelances { get; set; }
+
     public DateTime DateDemande { get; set; }
 
     public string Titre { get; set; } = null!;
@@ -26,6 +28,8 @@ public partial class Demande
     public virtual ICollection<Competdemande> Competdemandes { get; set; } = new List<Competdemande>();
 
     public virtual ICollection<Competfree> Competfrees { get; set; } = new List<Competfree>();
+
+    public virtual Freelance? IdFreelancesNavigation { get; set; }
 
     public virtual Statut IdStatutsNavigation { get; set; } = null!;
 

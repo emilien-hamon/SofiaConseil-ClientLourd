@@ -41,7 +41,7 @@ public partial class SofiaConseilContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySQL("Server=localhost;Database=SofiaConseil;Uid=root;Pwd=;");
+        => optionsBuilder.UseMySQL("Server=10.193.62.1;Database=SofiaConseil;Uid=emilien;Pwd=Not24get;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -166,6 +166,8 @@ public partial class SofiaConseilContext : DbContext
 
             entity.ToTable("demandes");
 
+            entity.HasIndex(e => e.IdFreelances, "demandes_id_freelances_foreign");
+
             entity.HasIndex(e => e.IdStatuts, "demandes_id_statuts_foreign");
 
             entity.HasIndex(e => e.IdUsers, "demandes_id_users_foreign");
@@ -183,6 +185,10 @@ public partial class SofiaConseilContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(255)
                 .HasColumnName("description");
+            entity.Property(e => e.IdFreelances)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("bigint(20) unsigned")
+                .HasColumnName("id_freelances");
             entity.Property(e => e.IdStatuts)
                 .HasColumnType("bigint(20) unsigned")
                 .HasColumnName("id_statuts");
@@ -200,6 +206,11 @@ public partial class SofiaConseilContext : DbContext
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnType("timestamp")
                 .HasColumnName("updated_at");
+
+            entity.HasOne(d => d.IdFreelancesNavigation).WithMany(p => p.Demandes)
+                .HasForeignKey(d => d.IdFreelances)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("demandes_id_freelances_foreign");
 
             entity.HasOne(d => d.IdStatutsNavigation).WithMany(p => p.Demandes)
                 .HasForeignKey(d => d.IdStatuts)

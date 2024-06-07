@@ -18,4 +18,6 @@ public partial class Freelance
     public DateTime? CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
+
+    public virtual ICollection<Demande> Demandes { get; set; } = new List<Demande>();
 }

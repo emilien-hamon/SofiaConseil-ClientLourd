@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="SofiaConseil.Wpf.Views.ViewDemandes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SofiaConseil.Wpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <ListBox x:Name="ListBoxDemandes" 
+                     Grid.Row="1" Grid.Column="0" Grid.RowSpan="6"
+                     SelectedItem="{Binding SelectedDemande, UpdateSourceTrigger=PropertyChanged}"
+                     ItemsSource="{Binding Demandes}"
+                     DisplayMemberPath="Titre" />
+            <Label Grid.Row="0" Grid.Column="0" Content="Demande" HorizontalAlignment="Center" />
+            <Label Grid.Row="1" Grid.Column="1" Content="Collaborateur" HorizontalAlignment="Center" />
+            <ComboBox Grid.Row="2" Grid.Column="1"
+                      ItemsSource="{Binding Freelances}"
+                      SelectedValuePath="Id"
+                      SelectedValue="{Binding SelectedDemande.IdFreelances, UpdateSourceTrigger=PropertyChanged}"
+                      DisplayMemberPath="Nom" />
+            <Label Grid.Row="3" Grid.Column="1" Content="Statut" HorizontalAlignment="Center" />
+            <ComboBox Grid.Row="4" Grid.Column="1"
+          ItemsSource="{Binding Statuts}"
+          SelectedValuePath="Id"
+          SelectedValue="{Binding SelectedDemande.IdStatuts, UpdateSourceTrigger=PropertyChanged}"
+          DisplayMemberPath="Statut1" />
+
+
+            <Button x:Name="UpdateDemandeButton" Content="Enrengistrer" Grid.Row="5" Grid.Column="1" Click="UpdateDemandeButton_Click" />
+
+            <!-- New Column for Detailed View -->
+            <StackPanel Grid.Row="1" Grid.Column="2" Grid.RowSpan="6" Margin="10">
+                <TextBlock Text="Détails de la Demande" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <TextBlock Text="Titre :" FontWeight="Bold"/>
+                <TextBlock Text="{Binding SelectedDemande.Titre}" Margin="0,0,0,10"/>
+                <TextBlock Text="Description :" FontWeight="Bold"/>
+                <TextBlock Text="{Binding SelectedDemande.Description}" Margin="0,0,0,10"/>
+                <TextBlock Text="Statut :" FontWeight="Bold"/>
+                <TextBlock Text="{Binding SelectedDemande.IdStatutsNavigation.Statut1}" Margin="0,0,0,10"/>
+                <!-- Add more fields as needed -->
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

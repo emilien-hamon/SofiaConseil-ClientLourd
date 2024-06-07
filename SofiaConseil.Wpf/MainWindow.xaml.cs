@@ -22,6 +22,8 @@ namespace SofiaConseil.Wpf
         public MainWindow()
         {
             this.DataContext = new ViewModelMainWindow();
+            this.DataContext = new ViewModelFreelances();
+            this.DataContext = new ViewModelDemandes();
             InitializeComponent();
         }
 
@@ -35,6 +37,18 @@ namespace SofiaConseil.Wpf
         {
             DockPanelMain.Children.Clear();
             DockPanelMain.Children.Add(new ViewCompetences());
+        }
+        private void ButtonFreelances_Click(object sender, RoutedEventArgs e)
+        {
+            DockPanelMain.Children.Clear();
+            DockPanelMain.Children.Add(new ViewFreelances());
+        }
+        
+        
+        private void ButtonDemandes_Click(object sender, RoutedEventArgs e)
+        {
+            DockPanelMain.Children.Clear();
+            DockPanelMain.Children.Add(new ViewDemandes());
         }
     }
 }
