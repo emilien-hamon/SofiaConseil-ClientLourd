@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SofiaConseil.Wpf.ViewModel
 {
-    internal class ViewModelCompetences :ViewModelBase
+    internal class ViewModelCompetences : ViewModelBase
     {
         public ObservableCollection<Competence> Competences { get; set; }
 
@@ -36,6 +36,31 @@ namespace SofiaConseil.Wpf.ViewModel
                 context.Add(competence);
                 context.SaveChanges();
                 Competences.Add(competence);
+            }
+        }
+
+        public void RemoveCompetence()
+        {
+            if (SelectedCompetence is not null)
+            {
+                using (SofiaConseilContext context = new())
+                {
+                    context.Competences.Remove(SelectedCompetence);
+                    context.SaveChanges();
+                    Competences.Remove(SelectedCompetence);
+                }
+            }
+        }
+
+        public void UpdateCompetence()
+        {
+            if (SelectedCompetence is not null)
+            {
+                using (SofiaConseilContext context = new())
+                {
+                    context.Competences.Update(SelectedCompetence);
+                    context.SaveChanges();
+                }
             }
         }
     }

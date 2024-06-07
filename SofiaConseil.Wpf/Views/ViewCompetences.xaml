@@ -8,24 +8,35 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="175"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="175"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <ListBox 
-            Grid.Column="0" 
-            Grid.Row="0"
-            ItemsSource="{Binding Competences}" 
-            SelectedItem="{Binding SelectedCompetence}"
-            DisplayMemberPath="Nom"
-            >
-            
-        </ListBox>
-        <Button x:Name="ButtonAddCompetence" Grid.Column="0" Grid.Row="1" Content="Ajouter" Click="ButtonAddCompetence_Click" ></Button>
-        
+        <Label  Grid.Row="0" Grid.Column="1" Content="Compétences" HorizontalAlignment="Center" />
+
+        <ListBox x:Name="ListBoxCompetences" 
+                 Grid.Row="1" Grid.Column="1"
+                 SelectedItem="{Binding SelectedCompetence, UpdateSourceTrigger=PropertyChanged}"
+                 ItemsSource="{Binding Competences}"
+                 DisplayMemberPath="Nom" />
+
+        <Label  Grid.Row="3" Grid.Column="0" Content="Nom" HorizontalAlignment="Center" />
+        <Label  Grid.Row="3" Grid.Column="1" Content="Description" HorizontalAlignment="Center" />
+
+        <TextBox  Grid.Row="4" Grid.Column="0" Text="{Binding SelectedCompetence.Nom, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox  Grid.Row="4" Grid.Column="1" Text="{Binding SelectedCompetence.Description, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Button x:Name="AddCompetenceButton" Content="Ajouter" Grid.Row="5" Grid.Column="0" Click="ButtonAddCompetence_Click" ></Button>
+        <Button x:Name="DeleteCompetenceButton" Content="Supprimer" Grid.Row="5" Grid.Column="2" Click="ButtonDeleteCompetence_Click" ></Button>
+        <Button x:Name="UpdateCompetenceButton" Content="Enregistrer les modifications" Grid.Row="5" Grid.Column="1" Click="ButtonUpdateCompetence_Click" ></Button>
     </Grid>
 </UserControl>

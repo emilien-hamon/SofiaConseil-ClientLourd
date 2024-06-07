@@ -14,11 +14,13 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Orientation="Vertical" Background="BlueViolet">
+        <StackPanel Grid.Column="0" Orientation="Vertical" Background="#5533ff">
             <Label Content="Sofia Conseil" Foreground="WhiteSmoke" FontSize="20" HorizontalAlignment="Center" ></Label>
 
             <Button x:Name="ButtonHome" Content="Accueil" Width="200" Margin="5" Click="ButtonHome_Click" ></Button>
             <Button x:Name="ButtonCompetences" Content="Competences" Width="200" Margin="5" Click="ButtonCompetences_Click" ></Button>
+            <Button x:Name="ButtonFreelances" Content="Collaborateurs" Width="200" Margin="5" Click="ButtonFreelances_Click" ></Button>
+            <Button x:Name="ButtonDemande" Content="Gérer les demandes" Width="200" Margin="5" Click="ButtonDemandes_Click" ></Button>
             
         </StackPanel>
 
