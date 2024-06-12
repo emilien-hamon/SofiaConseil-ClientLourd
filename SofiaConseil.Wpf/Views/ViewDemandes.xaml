@@ -20,12 +20,20 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+<<<<<<< Updated upstream
+=======
+                <RowDefinition Height="auto"/>
+>>>>>>> Stashed changes
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <ListBox x:Name="ListBoxDemandes" 
+<<<<<<< Updated upstream
                      Grid.Row="1" Grid.Column="0" Grid.RowSpan="6"
+=======
+                     Grid.Row="1" Grid.Column="0" Grid.RowSpan="7"
+>>>>>>> Stashed changes
                      SelectedItem="{Binding SelectedDemande, UpdateSourceTrigger=PropertyChanged}"
                      ItemsSource="{Binding Demandes}"
                      DisplayMemberPath="Titre" />
@@ -38,6 +46,7 @@
                       DisplayMemberPath="Nom" />
             <Label Grid.Row="3" Grid.Column="1" Content="Statut" HorizontalAlignment="Center" />
             <ComboBox Grid.Row="4" Grid.Column="1"
+<<<<<<< Updated upstream
           ItemsSource="{Binding Statuts}"
           SelectedValuePath="Id"
           SelectedValue="{Binding SelectedDemande.IdStatuts, UpdateSourceTrigger=PropertyChanged}"
@@ -48,6 +57,23 @@
 
             <!-- New Column for Detailed View -->
             <StackPanel Grid.Row="1" Grid.Column="2" Grid.RowSpan="6" Margin="10">
+=======
+                      ItemsSource="{Binding Statuts}"
+                      SelectedValuePath="Id"
+                      SelectedValue="{Binding SelectedDemande.IdStatuts, UpdateSourceTrigger=PropertyChanged}"
+                      DisplayMemberPath="Statut1" />
+
+            <Label Grid.Row="5" Grid.Column="1" Content="Matériels" HorizontalAlignment="Center" />
+            <ListBox x:Name="ListBoxMateriels" Grid.Row="6" Grid.Column="1" Height="100" Margin="5"
+                 ItemsSource="{Binding Materiels}"
+                 DisplayMemberPath="Nom"
+                 SelectionMode="Multiple"
+                 SelectionChanged="ListBoxMateriels_SelectionChanged" />
+
+            <Button x:Name="UpdateDemandeButton" Content="Enrengistrer" Grid.Row="7" Grid.Column="1" Click="UpdateDemandeButton_Click" />
+
+            <StackPanel Grid.Row="1" Grid.Column="2" Grid.RowSpan="7" Margin="10">
+>>>>>>> Stashed changes
                 <TextBlock Text="Détails de la Demande" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
                 <TextBlock Text="Titre :" FontWeight="Bold"/>
                 <TextBlock Text="{Binding SelectedDemande.Titre}" Margin="0,0,0,10"/>
@@ -55,7 +81,10 @@
                 <TextBlock Text="{Binding SelectedDemande.Description}" Margin="0,0,0,10"/>
                 <TextBlock Text="Statut :" FontWeight="Bold"/>
                 <TextBlock Text="{Binding SelectedDemande.IdStatutsNavigation.Statut1}" Margin="0,0,0,10"/>
+<<<<<<< Updated upstream
                 <!-- Add more fields as needed -->
+=======
+>>>>>>> Stashed changes
             </StackPanel>
         </Grid>
     </Grid>

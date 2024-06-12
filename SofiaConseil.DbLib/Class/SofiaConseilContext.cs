@@ -27,6 +27,10 @@ public partial class SofiaConseilContext : DbContext
 
     public virtual DbSet<Freelance> Freelances { get; set; }
 
+    public virtual DbSet<Materiel> Materiels { get; set; }
+
+    public virtual DbSet<Materielsdemande> Materielsdemandes { get; set; }
+
     public virtual DbSet<Migration> Migrations { get; set; }
 
     public virtual DbSet<PasswordReset> PasswordResets { get; set; }
@@ -279,6 +283,81 @@ public partial class SofiaConseilContext : DbContext
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnType("timestamp")
                 .HasColumnName("updated_at");
+        });
+
+        modelBuilder.Entity<Materiel>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("materiels");
+
+            entity.Property(e => e.Id)
+                .HasColumnType("bigint(20) unsigned")
+                .HasColumnName("id");
+            entity.Property(e => e.AdMac)
+                .HasMaxLength(255)
+                .HasColumnName("ad_mac");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("timestamp")
+                .HasColumnName("created_at");
+            entity.Property(e => e.Description)
+                .HasMaxLength(255)
+                .HasColumnName("description");
+            entity.Property(e => e.Nom)
+                .HasMaxLength(255)
+                .HasColumnName("nom");
+            entity.Property(e => e.RememberToken)
+                .HasMaxLength(100)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("remember_token");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("timestamp")
+                .HasColumnName("updated_at");
+        });
+
+        modelBuilder.Entity<Materielsdemande>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("materielsdemandes");
+
+            entity.HasIndex(e => e.IdDemandes, "materielsdemandes_id_demandes_foreign");
+
+            entity.HasIndex(e => e.IdMateriels, "materielsdemandes_id_materiels_foreign");
+
+            entity.Property(e => e.Id)
+                .HasColumnType("bigint(20) unsigned")
+                .HasColumnName("id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("timestamp")
+                .HasColumnName("created_at");
+            entity.Property(e => e.IdDemandes)
+                .HasColumnType("bigint(20) unsigned")
+                .HasColumnName("id_demandes");
+            entity.Property(e => e.IdMateriels)
+                .HasColumnType("bigint(20) unsigned")
+                .HasColumnName("id_materiels");
+            entity.Property(e => e.RememberToken)
+                .HasMaxLength(100)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("remember_token");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("timestamp")
+                .HasColumnName("updated_at");
+
+            entity.HasOne(d => d.IdDemandesNavigation).WithMany(p => p.Materielsdemandes)
+                .HasForeignKey(d => d.IdDemandes)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("materielsdemandes_id_demandes_foreign");
+
+            entity.HasOne(d => d.IdMaterielsNavigation).WithMany(p => p.Materielsdemandes)
+                .HasForeignKey(d => d.IdMateriels)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("materielsdemandes_id_materiels_foreign");
         });
 
         modelBuilder.Entity<Migration>(entity =>

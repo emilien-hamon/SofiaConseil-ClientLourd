@@ -34,4 +34,6 @@ public partial class Demande
     public virtual Statut IdStatutsNavigation { get; set; } = null!;
 
     public virtual User IdUsersNavigation { get; set; } = null!;
+
+    public virtual ICollection<Materielsdemande> Materielsdemandes { get; set; } = new List<Materielsdemande>();
 }
